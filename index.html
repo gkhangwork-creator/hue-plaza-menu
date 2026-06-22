@@ -2,37 +2,91 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Hue Plaza Menu</title>
 
 <style>
+
 body{
 margin:0;
-background:#111;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
 }
 
 img{
-width:100%;
-display:block;
+max-width:100%;
+max-height:100vh;
+object-fit:contain;
 }
-</style>
 
+.controls{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:10px;
+}
+
+button{
+padding:10px 16px;
+font-size:16px;
+}
+
+</style>
 </head>
 
 <body>
 
-<img src="0.jpg">
-<img src="1.jpg">
-<img src="2.jpg">
-<img src="3.jpg">
-<img src="4.jpg">
-<img src="5.jpg">
-<img src="6.jpg">
-<img src="7.jpg">
-<img src="8.jpg">
-<img src="9.jpg">
-<img src="10.jpg">
-<img src="11.jpg">
+<img id="page" src="0.jpg">
+
+<div class="controls">
+<button onclick="prevPage()">◀</button>
+<button onclick="nextPage()">▶</button>
+</div>
+
+<script>
+
+const pages=[
+"0.jpg",
+"1.jpg",
+"2.jpg",
+"3.jpg",
+"4.jpg",
+"5.jpg",
+"6.jpg",
+"7.jpg",
+"8.jpg",
+"9.jpg",
+"10.jpg"
+"11.jpg"
+];
+
+let current=0;
+
+function showPage(){
+document.getElementById("page").src=pages[current];
+}
+
+function nextPage(){
+if(current<pages.length-1){
+current++;
+showPage();
+}
+}
+
+function prevPage(){
+if(current>0){
+current--;
+showPage();
+}
+}
+
+</script>
 
 </body>
 </html>
